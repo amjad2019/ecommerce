@@ -2,17 +2,14 @@ package com.poc.ecommerce.domain.product;
 
 import org.springframework.stereotype.Service;
 
-import com.poc.ecommerce.cqrs.query.ProductReadModel;
-import com.poc.ecommerce.cqrs.query.ProductReadRepository;
+import com.poc.ecommerce.cqrs.query.ProductRepository;
 
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
 public class ProductWriteService {
-	private final ProductRepository repo;
-	private final ProductReadRepository readRepo;
+	private final ProductRepository readRepo;
 
 //	@Transactional
 //	public Product create(CreateProductCommand cmd) {
