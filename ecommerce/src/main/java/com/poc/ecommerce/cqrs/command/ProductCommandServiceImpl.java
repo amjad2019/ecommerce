@@ -3,15 +3,16 @@ package com.poc.ecommerce.cqrs.command;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.poc.ecommerce.cqrs.query.ProductQuery;
 import com.poc.ecommerce.cqrs.query.ProductRepository;
 import com.poc.ecommerce.domain.product.Product;
 
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class ProductCommandServiceImpl implements ProductCommandService {
     
     private final ProductRepository productRepository;
@@ -66,10 +67,13 @@ public class ProductCommandServiceImpl implements ProductCommandService {
     @Override
     @Transactional
     public void deleteProduct(Long id) {
-    	Product product = productRepository.findByIdAndDeletedIsFalse(id)
-                .orElseThrow(() -> new EntityNotFoundException("Product not found with id: " + id));
+    	int updated = productRepository.softDeleteById(id);
         
-//        customRepository.softDelete(product);
+        if (updated == 0) {
+            throw new EntityNotFoundException("Product not found or already deleted with id: " + id);
+        }
+        
+        log.info("Product with id {} soft deleted successfully", id);
     }
     
     @Override
