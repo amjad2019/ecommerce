@@ -1,23 +1,21 @@
 package com.poc.ecommerce.domain.user;
-import com.poc.ecommerce.domain.user.Role;
-import com.poc.ecommerce.domain.user.User;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.poc.ecommerce.dto.auth.UserResponse;
 import com.poc.ecommerce.dto.auth.UserUpdateRequest;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 public class UserService {
     
     private final UserRepository userRepository;
-    private final PasswordEncoder passwordEncoder;
+//    private final PasswordEncoder passwordEncoder;
     
     @Transactional(readOnly = true)
     public List<UserResponse> getAllUsers() {
@@ -48,7 +46,7 @@ public class UserService {
         
         // Update password if provided
         if (request.getPassword() != null) {
-            user.setPassword(passwordEncoder.encode(request.getPassword()));
+            user.setPassword(request.getPassword());
         }
         
         // Update role if provided (only ADMIN can change roles)

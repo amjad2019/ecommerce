@@ -1,11 +1,11 @@
 package com.poc.ecommerce.cqrs.query;
 
+import java.math.BigDecimal;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import com.poc.ecommerce.domain.product.Product;
-
-import java.math.BigDecimal;
 
 public interface ProductQueryService {
 	Product getProductById(Long id);

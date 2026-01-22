@@ -5,15 +5,13 @@ import java.math.BigDecimal;
 import org.springframework.stereotype.Component;
 
 import com.poc.ecommerce.domain.order.Order;
-import com.poc.ecommerce.domain.user.Role;
 
 @Component
-public class PremiumDiscount implements DiscountStrategy {
+public class NoDiscountStrategy implements DiscountStrategy {
+
 	@Override
     public BigDecimal apply(Order order, BigDecimal total) {
-        if (order.getUser().getRole() == Role.PREMIUM_USER) {
-            return total.multiply(BigDecimal.valueOf(0.90));
-        }
         return total;
     }
 }
+
