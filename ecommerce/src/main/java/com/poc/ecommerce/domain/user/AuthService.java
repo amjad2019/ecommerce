@@ -28,15 +28,15 @@ public class AuthService {
     @Transactional
     public AuthResponse register(RegisterRequest request) {
         // Validate unique username
-        if (userRepository.existsByUsername(request.getUsername())) {
+        if (userRepository.existsByUsername(request.username())) {
             throw new RuntimeException("Username is already taken");
         }
         
         // Create new user
         User user = User.builder()
-                .username(request.getUsername())
-                .password(passwordEncoder.encode(request.getPassword()))
-                .role(request.getRole() != null ? request.getRole() : Role.USER)
+                .username(request.username())
+                .password(passwordEncoder.encode(request.password()))
+                .role(request.role())
                 .build();
         
         user = userRepository.save(user);
@@ -44,8 +44,8 @@ public class AuthService {
         // Authenticate the user
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
-                        request.getUsername(),
-                        request.getPassword()
+                        request.username(),
+                        request.password()
                 )
         );
         
@@ -59,8 +59,8 @@ public class AuthService {
     public AuthResponse login(LoginRequest request) {
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
-                        request.getUsername(),
-                        request.getPassword()
+                        request.username(),
+                        request.password()
                 )
         );
         

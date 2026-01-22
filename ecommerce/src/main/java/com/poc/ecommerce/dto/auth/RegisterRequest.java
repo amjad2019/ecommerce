@@ -2,20 +2,4 @@ package com.poc.ecommerce.dto.auth;
 
 import com.poc.ecommerce.domain.user.Role;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-@Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
-public class RegisterRequest {
-    private String token;
-    private String type = "Bearer";
-    private Long id;
-    private String username;
-    private String password;
-    private Role role;
-}
+public record RegisterRequest(String username, String email, String password, String firstName, String lastName, Role role) {}

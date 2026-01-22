@@ -37,6 +37,20 @@ public class OrderController {
 
         return placeOrderHandler.handle(command);
     }
+    
+//    @PostMapping
+//    @PreAuthorize("hasAnyRole('USER', 'PREMIUM_USER', 'ADMIN')")
+//    @Operation(summary = "Create new order", description = "Place order with multiple products")
+//    public ResponseEntity<Order> placeOrder(
+//            @Valid @RequestBody List<OrderItemRequest> items, ) {
+//        Long userId = getCurrentUserId(); // Extract from security context
+//        OrderCommandResponse response = orderCommandService.createOrder(command, userId);
+//        
+//      PlaceOrderCommand command =
+//      new PlaceOrderCommand(user.getId(), user.getRole(), items);
+//        
+//       return ResponseEntity.status(HttpStatus.CREATED).body(placeOrderHandler.handle(command));
+//    }
 
     @GetMapping("/user")
     public List<OrderView> getMyOrders(

@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.poc.ecommerce.cqrs.query.ProductRepository;
 import com.poc.ecommerce.discount.DiscountEngine;
-import com.poc.ecommerce.discount.DiscountStrategy;
 import com.poc.ecommerce.domain.order.Order;
 import com.poc.ecommerce.domain.order.OrderItem;
 import com.poc.ecommerce.domain.order.OrderItemRequest;
@@ -25,8 +24,7 @@ public class PlaceOrderCommandServiceImpl implements PlaceOrderCommandService{
 
     private final ProductRepository productRepo;
     private final OrderRepository orderRepo;
-//    private final DiscountStrategy discountEngine;
-    private final DiscountEngine discountEngine;        // ✅
+    private final DiscountEngine discountEngine;   
 
 
     @Override
