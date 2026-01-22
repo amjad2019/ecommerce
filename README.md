@@ -14,7 +14,7 @@ Spring Boot 3 application for product, user, and order management with dynamic d
 ```bash
 # 1. Clone & setup
 git clone https://github.com/yourusername/ecommerce.git
-cd ecommerce-cqrs
+cd ecommerce
 
 # 2. Configure database
 createdb shop
