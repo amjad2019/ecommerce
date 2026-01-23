@@ -57,6 +57,9 @@ public class OrderItem {
     @Column(name = "item_total", precision = 10, scale = 2, nullable = false)
     private BigDecimal itemTotal;
     
+    @Column(name = "total_price", precision = 10, scale = 2, nullable = false)
+    private BigDecimal totalPrice;
+    
     @PrePersist
     @PreUpdate
     protected void calculateItemTotal() {
