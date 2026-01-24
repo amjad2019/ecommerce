@@ -1,5 +1,5 @@
 # ecommerce
-ecommerce mini project with swagger, java Spring boot, postgresql using CQRS pattern
+ecommerce mini project with swagger, java Spring boot, postgresql, docker using CQRS pattern
 
 Spring Boot 3 application for product, user, and order management with dynamic discounts.
 
@@ -9,6 +9,7 @@ Spring Boot 3 application for product, user, and order management with dynamic d
 - Java 17+
 - Maven 3.6+
 - PostgreSQL 14+ (or H2 for dev)
+- Docker
 
 ### Setup & Run
 ```bash
