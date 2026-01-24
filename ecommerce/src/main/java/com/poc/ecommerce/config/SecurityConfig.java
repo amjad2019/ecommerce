@@ -50,6 +50,7 @@ public class SecurityConfig {
             "/api/public/**",
             "/error",
             "/h2-console/**",
+            "/api/auth/**",
             "/actuator/health",
             "/actuator/info"
     };
@@ -98,12 +99,6 @@ public class SecurityConfig {
                     .requestMatchers(HttpMethod.GET, "/api/orders/user/**")
                         .hasAnyRole("USER", "PREMIUM_USER", "ADMIN")
                     .requestMatchers("/api/orders/**")
-                        .hasRole("ADMIN")
-
-                    // Users
-                    .requestMatchers("/api/users/profile")
-                        .authenticated()
-                    .requestMatchers("/api/users/admin/**")
                         .hasRole("ADMIN")
 
                     // Categories
