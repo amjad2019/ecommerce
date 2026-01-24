@@ -29,7 +29,22 @@ java -jar target/ecommerce-*.jar
 # OR with Maven
 mvn spring-boot:run
 ```
+### Setup & Run with Docker
+```bash
+# 1. Clone repository
+git clone https://github.com/yourusername/ecommerce.git
+cd ecommerce
 
+# 2. Build and run everything (PostgreSQL + App)
+docker-compose build
+docker-compose up -d
+
+# 3. Check running services
+docker-compose ps
+
+# 4. View logs
+docker-compose logs -f app
+```
 ##  Key Features
 - **CQRS Architecture** - Clean separation of read/write operations
 -  **Dynamic Discounts** - Strategy pattern for user/order-based discounts
