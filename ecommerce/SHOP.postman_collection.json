@@ -1,0 +1,355 @@
+{
+	"info": {
+		"_postman_id": "fe6b1715-60df-491f-9d69-1d5d94d0d7b9",
+		"name": "SHOP",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get All Products",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwidXNlcm5hbWUiOiJhbWphZGh1c3NhaW4iLCJyb2xlIjoiUFJFTUlVTV9VU0VSIiwiaWF0IjoxNzY5MjY5Nzg4LCJleHAiOjE3NjkzNTYxODh9.msOiXhvUJI34sQ60O4TBWkdNdIg9PbWeDzpfNAPMfbUNh-Bg1y0e5oH61aDs7HD0Bp2WvQCFeUItOw4T0yJucA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Product Detail",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/products/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"products",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search Product",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/products/search?name=Test1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"products",
+						"search"
+					],
+					"query": [
+						{
+							"key": "minPrice",
+							"value": "100",
+							"disabled": true
+						},
+						{
+							"key": "maxPrice",
+							"value": "10000",
+							"disabled": true
+						},
+						{
+							"key": "availableOnly",
+							"value": "true",
+							"disabled": true
+						},
+						{
+							"key": "pageable",
+							"value": "{\n  \"page\": 0,\n  \"size\": 1,\n  \"sort\": [\n    \"string\"\n  ]\n}",
+							"disabled": true
+						},
+						{
+							"key": "name",
+							"value": "Test1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Product",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/products/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"products",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create New Product",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIyIiwidXNlcm5hbWUiOiJhbWphZGFkbWluIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzY5MjY5ODk1LCJleHAiOjE3NjkzNTYyOTV9.vaCGFW2IwPJv37jTDDpXFRv7hdTZGhSbgMlGdDthPlL5aV6vcGfeBRWn06TOlHtnkwH8oU9wLaFvfn9SzZcgzw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Test1\",\r\n  \"description\": \"Testing product creation\",\r\n  \"price\": 5555.0,\r\n  \"quantity\": 55\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Product",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"price\": 6666.0,\r\n  \"quantity\": 500\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/products/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"products",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Restock Product",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/products/2/restock?quantity=120",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"products",
+						"2",
+						"restock"
+					],
+					"query": [
+						{
+							"key": "quantity",
+							"value": "120"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User Orders",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwidXNlcm5hbWUiOiJhbWphZGh1c3NhaW4iLCJyb2xlIjoiUFJFTUlVTV9VU0VSIiwiaWF0IjoxNzY5MjY5Nzg4LCJleHAiOjE3NjkzNTYxODh9.msOiXhvUJI34sQ60O4TBWkdNdIg9PbWeDzpfNAPMfbUNh-Bg1y0e5oH61aDs7HD0Bp2WvQCFeUItOw4T0yJucA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/orders/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"orders",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"amjadhussain\",\r\n    \"password\": \"amjadhussain\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "register user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"amjadadmin\",\r\n    \"email\": \"amjadadmin@gmail.com\",\r\n    \"password\": \"amjadadmin\",\r\n    \"firstname\": \"amjad\",\r\n    \"lastname\": \"admin\",\r\n    \"role\": \"ADMIN\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/auth/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Place Order",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI2IiwidXNlcm5hbWUiOiJhbWphZDIiLCJyb2xlIjoiUFJFTUlVTV9VU0VSIiwiaWF0IjoxNzY5MjA1NjQ2LCJleHAiOjE3NjkyOTIwNDZ9.SbdKSHdj3wDFoukXSkNt5mbEQpJgt4wmOfPer0Lm1AZgrWmkHepd8ipFGZFYgY4ZgtoEbnI4A2WZoXOmUgeL6w",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n  {\r\n    \"productId\": 5,\r\n    \"quantity\": 2\r\n  }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"orders"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
